@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import mainImage from "../assets/Main_img.png";
 
 const LearnAndGrow = () => {
   useEffect(() => {
@@ -13,7 +14,7 @@ const LearnAndGrow = () => {
         
         <div className="w-full md:w-1/2" data-aos="fade-right">
           <img
-            src="src/assets/Main_img.png"
+            src={mainImage}
             alt="Learning"
             className="rounded-xl w-full"
           />

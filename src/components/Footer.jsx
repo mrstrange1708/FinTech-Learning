@@ -1,4 +1,8 @@
 import React from 'react';
+import facebookIcon from "../assets/facebook.png";
+import instagramIcon from "../assets/instagram.png";
+import linkedinIcon from "../assets/linkedin.png";
+import youtubeIcon from "../assets/youtube.png";
 
 const Footer = () => {
   return (
@@ -55,18 +59,17 @@ const Footer = () => {
           </div>
 
           <div className="flex space-x-4 mt-4">
-            {/* Replace src with real icons or use react-icons */}
             <a href="#" className="hover:opacity-75">
-              <img src="src/assets/facebook.png" alt="Facebook" className="w-5 h-5" />
+              <img src={facebookIcon} alt="Facebook" className="w-5 h-5" />
             </a>
             <a href="#" className="hover:opacity-75">
-              <img src="src/assets/instagram.png" alt="Instagram" className="w-5 h-5" />
+              <img src={instagramIcon} alt="Instagram" className="w-5 h-5" />
             </a>
             <a href="#" className="hover:opacity-75">
-              <img src="src/assets/linkedin.png" alt="X" className="w-5 h-5" />
+              <img src={linkedinIcon} alt="LinkedIn" className="w-5 h-5" />
             </a>
             <a href="#" className="hover:opacity-75">
-              <img src="src/assets/youtube.png" alt="TikTok" className="w-5 h-5" />
+              <img src={youtubeIcon} alt="YouTube" className="w-5 h-5" />
             </a>
           </div>
         </div>

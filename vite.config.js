@@ -8,11 +8,5 @@ export default defineConfig({
   plugins: [
     tailwindcss(),
     react()
-  ],
-  build: {
-    outDir: 'dist',
-  },
-  server: {
-    historyApiFallback: true,   // 👈 Important for React Router
-  }
+  ]
 })

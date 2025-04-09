@@ -2,30 +2,33 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { useEffect } from 'react';
 import { Heart, Eye } from "lucide-react";
+import fintip1 from "../assets/fintip_1.avif";
+import fintip2 from "../assets/fintip_2.avif";
+import fintip3 from "../assets/fintip_3.avif";
 
 export default function FinTips() {
   useEffect(() => {
     AOS.init({ duration: 1000 });
-  }, []);
+ }, []);
 
   const tips = [
     {
       title: "Empower Your Financial Knowledge…",
       description:
         "Are you looking to enhance your financial knowledge and improve your literacy in an engaging and interactive way?",
-      image: "src/assets/fintip_1.avif",
+      image: fintip1,
     },
     {
       title: "Boost Your Financial Literacy with Practical Tips…",
       description:
         "Are you looking to enhance your financial literacy and make better informed decisions about your money?",
-      image: "src/assets/fintip_2.avif",
+      image: fintip2,
     },
     {
       title: "Interactive and Fun Financial Education…",
       description:
         "Financial education is a crucial aspect of our lives that often gets overlooked. Understanding money management is key.",
-      image: "src/assets/fintip_3.avif",
+      image: fintip3,
     },
   ];
 
