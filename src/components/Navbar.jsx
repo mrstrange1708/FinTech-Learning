@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from "../assets/logo.png";
 
 const Navbar = () => {
   return (
@@ -7,7 +8,7 @@ const Navbar = () => {
         
         {/* Logo (Left) */}
         <div className="flex items-center">
-          <img src="src/assets/logo.png" alt="Logo" className="h-20  w-auto object-contain mr-4" />
+          <img src={logo} alt="Logo" className="h-20 w-auto object-contain mr-4" />
           <span className="text-white text-xl font-semibold">FinTech Learning</span>
         </div>
 
