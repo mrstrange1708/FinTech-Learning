@@ -31,12 +31,12 @@ const Footer = () => {
               </label>
             </div>
 
-            <button
-              type="submit"
-              className="bg-white text-black py-2 px-4 w-full font-semibold hover:bg-gray-300 transition"
-            >
-              Subscribe
-            </button>
+            <a
+            href="#"
+            className="inline-block bg-white text-black font-semibold px-6 py-3 rounded-lg hover:bg-gray-300 transition w-1/3 text-center"
+          >
+            Subscribe
+          </a>
           </form>
         </div>
 
@@ -71,12 +71,11 @@ const Footer = () => {
             <a href="#" className="hover:opacity-75">
               <img src={youtubeIcon} alt="YouTube" className="w-5 h-5" />
             </a>
-          </div>
+         </div>
         </div>
 
       </div>
     </footer>
   );
 };
-
 export default Footer

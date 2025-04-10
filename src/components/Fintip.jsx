@@ -34,7 +34,7 @@ export default function FinTips() {
 
   return (
     <div id="FinTip" className="p-8 bg-black min-h-screen text-white mb-0">
-      <h1 className="text-5xl font-bold mb-10">Fin Tips</h1>
+      <h1 className="text-5xl font-bold mb-10">Learnings</h1>
       <div className="grid md:grid-cols-3 gap-8 mb-0">
         {tips.map((tip, idx) => (
           <div

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import AOS from 'aos';
 import 'aos/dist/aos.css';
+import { FaPlay } from 'react-icons/fa';
 
 const Reels = () => {
   useEffect(() => {
@@ -18,7 +19,10 @@ const Reels = () => {
 
   return (
     <div id="Reels" className="flex flex-col items-center justify-center min-h-screen bg-black pt-20">
-      <h1 className="text-3xl font-bold mb-8 text-white">Reels 📈</h1>
+      <h1 className="text-3xl font-bold mb-8 text-white flex items-center space-x-3">
+        <span>Videos</span>
+        <FaPlay className="text-red-500 text-xl" />
+      </h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10">
         {reels.map((url, index) => (
@@ -27,7 +31,7 @@ const Reels = () => {
             className="bg-gray-900 shadow-lg rounded-lg overflow-hidden flex flex-col transform transition-smooth duration-500 ease-out hover:scale-105 hover:shadow-xl"
             data-aos="zoom-in-up"
           >
-            <div className="w-full h-64">
+            <div className="relative w-full h-64">
               <iframe
                 src={url}
                 title={`Reel ${index + 1}`}
