@@ -3,60 +3,61 @@ import { Link } from 'react-router-dom';
 
 const questions = [
   {
-    question: "Financial Goals: What is a financial goal?",
+    question: "What is the PRIMARY reason why a 'zero-based budget' is more effective than the '50/30/20' rule for long-term savings?",
     options: [
-      "A target related to saving or spending money",
-      "A plan only for leisure activities",
-      "A requirement for getting a loan",
-      "An unpredictable wish"
+      "It limits flexibility to spend on non-essential categories",
+      "It forces you to assign every dollar a purpose, leaving no room for waste",
+      "It automatically adjusts for inflation and unexpected expenses",
+      "It is easier to follow and requires less time to manage"
     ],
-    answer: "A target related to saving or spending money"
+    answer: "It forces you to assign every dollar a purpose, leaving no room for waste"
   },
   {
-    question: "Financial Goals: Why is it important to set financial goals?",
+    question: "Which of the following is the most problematic consequence of ignoring the *emergency fund* concept in your budget?",
     options: [
-      "Limits spending only on luxuries",
-      "Decreases financial planning",
-      "Creates more confusion",
-      "Provides direction and motivation for money management"
+      "You will struggle to account for your discretionary spending",
+      "You will be unable to meet unexpected expenses without going into high-interest debt",
+      "You will miss opportunities to invest in high-risk ventures",
+      "You will only be able to save for short-term goals"
     ],
-    answer: "Provides direction and motivation for money management"
+    answer: "You will be unable to meet unexpected expenses without going into high-interest debt"
   },
   {
-    question: "Financial Goals: What is the first step in setting a financial goal?",
+    question: "In a scenario where you have a fixed monthly income but irregular, unexpected expenses, which budgeting method would be most beneficial?",
     options: [
-      "Spending freely",
-      "Ignoring expenses",
-      "Borrowing money",
-      "Identifying what you want to achieve"
+      "Envelopes method, categorizing spending beforehand",
+      "Pay yourself first method, consistently saving a fixed percentage",
+      "Zero-based budgeting, reassigning unused funds every month",
+      "80/20 rule, where 80% goes to needs and 20% goes to wants"
     ],
-    answer: "Identifying what you want to achieve"
+    answer: "Zero-based budgeting, reassigning unused funds every month"
   },
   {
-    question: "Financial Goals: Which is an example of a short-term financial goal?",
+    question: "If you are consistently overspending on ‘wants’ in your budget, what is the underlying issue most likely to be?",
     options: [
-      "Long-term investment planning",
-      "Saving for a new phone in a few months",
-      "Retirement planning over decades",
-      "Paying off a mortgage over 20 years"
+      "Underestimating monthly discretionary income",
+      "Misclassifying needs as wants",
+      "Overestimating long-term savings potential",
+      "Ignoring fixed expenses such as rent or utilities"
     ],
-    answer: "Saving for a new phone in a few months"
+    answer: "Misclassifying needs as wants"
   },
   {
-    question: "Financial Goals: How can breaking down a goal help financially?",
+    question: "What is the financial risk of not accounting for inflation in a long-term savings plan?",
     options: [
-      "Increases complexity",
-      "Eliminates the need for a plan",
-      "Makes the goal more manageable",
-      "Discourages saving"
+      "Potential reduction in purchasing power, leading to unmet financial goals",
+      "Increased ability to invest in high-risk ventures",
+      "More money saved in the long run, due to consistent interest rates",
+      "A higher chance of achieving desired retirement age"
     ],
-    answer: "Makes the goal more manageable"
+    answer: "Potential reduction in purchasing power, leading to unmet financial goals"
   }
 ];
 
 const Unit3 = () => {
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [currentQuestionIndex, setCurrentQuestionIndex] = useState(0);
+  const [showResult, setShowResult] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -64,7 +65,12 @@ const Unit3 = () => {
 
   const handleAnswerClick = (qIndex, option) => {
     if (selectedAnswers[qIndex]) return;
-    setSelectedAnswers(prev => ({ ...prev, [qIndex]: option }));
+    const newSelectedAnswers = { ...selectedAnswers, [qIndex]: option };
+    setSelectedAnswers(newSelectedAnswers);
+
+    if (Object.keys(newSelectedAnswers).length === questions.length) {
+      setShowResult(true);
+    }
   };
 
   return (
@@ -80,86 +86,109 @@ const Unit3 = () => {
 
       <h1 className="text-4xl font-bold mb-8 text-center">Module 3: Financial Goals</h1>
 
-      <div className="flex flex-col md:flex-row">
-        {/* Sidebar Pagination */}
-        <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 w-full md:w-1/4 mb-6 md:mb-0 md:mr-8 rounded-2xl shadow-lg flex flex-col items-center">
-          <h3 className="text-2xl font-bold mb-6 text-cyan-400 tracking-wide">Questions</h3>
-          <div className="grid grid-cols-4 gap-4">
-            {questions.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => setCurrentQuestionIndex(index)}
-                className={`
-                  w-10 h-10 rounded-full flex items-center justify-center font-semibold
-                  ${currentQuestionIndex === index ? 'bg-cyan-600 text-white' : 'bg-gray-700 text-white hover:bg-cyan-500'}
-                  shadow-md transform hover:scale-110 transition-transform duration-300
-                `}
-              >
-                {index + 1}
-              </button>
-            ))}
+      {showResult && (
+        <div className="flex flex-col items-center justify-center min-h-[70vh]">
+          <div className="bg-gradient-to-br from-green-500 to-green-700 p-14 rounded-3xl shadow-2xl w-full max-w-xl text-center animate-fade-in">
+            <h2 className="text-5xl font-extrabold mb-6 text-white">🎉 Unit Completed!</h2>
+            <p className="text-2xl text-white mb-6">
+              You answered {
+                Object.keys(selectedAnswers).filter(qIndex =>
+                  questions[qIndex].answer === selectedAnswers[qIndex]
+                ).length
+              } out of {questions.length} questions correctly!
+            </p>
+            <Link
+              to="/"
+              className="inline-block mt-4 bg-white text-green-700 font-bold px-8 py-3 rounded-full shadow-lg hover:bg-gray-100 transition"
+            >
+              Back to Home
+            </Link>
           </div>
         </div>
+      )}
 
-        {/* Main Question Area */}
-        <div className="flex-1 md:w-1/2">
-          <div className="bg-gray-800 p-6 rounded-lg shadow-md">
-            <h2 className="text-xl font-semibold mb-6">
-              {currentQuestionIndex + 1}. {questions[currentQuestionIndex].question}
-            </h2>
-            <div className="flex flex-col space-y-4">
-              {questions[currentQuestionIndex].options.map((option, oIndex) => {
-                const userSelected = selectedAnswers[currentQuestionIndex];
-                const isCorrect = questions[currentQuestionIndex].answer === option;
-                const isUserSelected = userSelected === option;
-                const showGreen = userSelected && (isCorrect || (userSelected !== questions[currentQuestionIndex].answer && option === questions[currentQuestionIndex].answer));
-                const showRed = userSelected && isUserSelected && !isCorrect;
-
-                return (
-                  <button
-                    key={oIndex}
-                    onClick={() => handleAnswerClick(currentQuestionIndex, option)}
-                    className={`
-                      px-6 py-3 rounded-lg border text-left
-                      ${
-                        userSelected
-                          ? showGreen
-                            ? 'bg-green-500 border-green-700'
-                            : showRed
-                            ? 'bg-red-500 border-red-700'
-                            : 'bg-gray-700'
-                          : 'bg-gray-700 hover:bg-gray-600'
-                      }
-                      transition
-                    `}
-                  >
-                    {option}
-                  </button>
-                );
-              })}
+      {!showResult && (
+        <div className="flex flex-col md:flex-row">
+          {/* Sidebar Pagination */}
+          <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 w-full md:w-1/4 mb-6 md:mb-0 md:mr-8 rounded-2xl shadow-lg flex flex-col items-center">
+            <h3 className="text-2xl font-bold mb-6 text-cyan-400 tracking-wide">Questions</h3>
+            <div className="grid grid-cols-4 gap-4">
+              {questions.map((_, index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentQuestionIndex(index)}
+                  className={`
+                    w-10 h-10 rounded-full flex items-center justify-center font-semibold
+                    ${currentQuestionIndex === index ? 'bg-cyan-600 text-white' : 'bg-gray-700 text-white hover:bg-cyan-500'}
+                    shadow-md transform hover:scale-110 transition-transform duration-300
+                  `}
+                >
+                  {index + 1}
+                </button>
+              ))}
             </div>
+          </div>
 
-            {/* Navigation Buttons */}
-            <div className="flex justify-between mt-8">
-              <button
-                onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}
-                disabled={currentQuestionIndex === 0}
-                className="bg-cyan-600 text-white px-6 py-2 rounded-full disabled:opacity-50"
-              >
-                Previous
-              </button>
+          {/* Main Question Area */}
+          <div className="flex-1 md:w-1/2">
+            <div className="bg-gray-800 p-6 rounded-lg shadow-md">
+              <h2 className="text-xl font-semibold mb-6">
+                {currentQuestionIndex + 1}. {questions[currentQuestionIndex].question}
+              </h2>
+              <div className="flex flex-col space-y-4">
+                {questions[currentQuestionIndex].options.map((option, oIndex) => {
+                  const userSelected = selectedAnswers[currentQuestionIndex];
+                  const isCorrect = questions[currentQuestionIndex].answer === option;
+                  const isUserSelected = userSelected === option;
+                  const showGreen = userSelected && (isCorrect || (userSelected !== questions[currentQuestionIndex].answer && option === questions[currentQuestionIndex].answer));
+                  const showRed = userSelected && isUserSelected && !isCorrect;
 
-              <button
-                onClick={() => setCurrentQuestionIndex((prev) => Math.min(prev + 1, questions.length - 1))}
-                disabled={currentQuestionIndex === questions.length - 1}
-                className="bg-cyan-600 text-white px-6 py-2 rounded-full disabled:opacity-50"
-              >
-                Next
-              </button>
+                  return (
+                    <button
+                      key={oIndex}
+                      onClick={() => handleAnswerClick(currentQuestionIndex, option)}
+                      className={`
+                        px-6 py-3 rounded-lg border text-left
+                        ${
+                          userSelected
+                            ? showGreen
+                              ? 'bg-green-500 border-green-700'
+                              : showRed
+                              ? 'bg-red-500 border-red-700'
+                              : 'bg-gray-700'
+                            : 'bg-gray-700 hover:bg-gray-600'
+                        }
+                        transition
+                      `}
+                    >
+                      {option}
+                    </button>
+                  );
+                })}
+              </div>
+
+              {/* Navigation Buttons */}
+              <div className="flex justify-between mt-8">
+                <button
+                  onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}
+                  disabled={currentQuestionIndex === 0}
+                  className="bg-cyan-600 text-white px-6 py-2 rounded-full disabled:opacity-50"
+                >
+                  Previous
+                </button>
+
+                <button
+                  onClick={() => setCurrentQuestionIndex((prev) => Math.min(prev + 1, questions.length - 1))}
+                  disabled={currentQuestionIndex === questions.length - 1}
+                  className="bg-cyan-600 text-white px-6 py-2 rounded-full disabled:opacity-50"
+                >
+                  Next
+                </button>
+              </div>
             </div>
           </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };
