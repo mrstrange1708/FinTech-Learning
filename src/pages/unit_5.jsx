@@ -164,7 +164,7 @@ const Unit5 = () => {
                 })}
               </div>
 
-              {/* Navigation Buttons */}
+
               <div className="flex justify-between mt-8">
                 <button
                   onClick={() => setCurrentQuestionIndex((prev) => Math.max(prev - 1, 0))}

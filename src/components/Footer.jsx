@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className="bg-black text-white">
       <div className="max-w-7xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-2 gap-8 border-t border-gray-700">
         
-        {/* Left Section */}
+
         <div className="flex flex-col space-y-6">
           <h2 className="text-2xl font-bold">Fintech Learning</h2>
           
@@ -40,7 +40,7 @@ const Footer = () => {
           </form>
         </div>
 
-        {/* Right Section */}
+
         <div className="flex flex-col space-y-6">
           <div className="space-y-2">
             <p>80199-44289</p>
