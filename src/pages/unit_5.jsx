@@ -106,7 +106,6 @@ const Unit5 = () => {
 
       {!showResult && (
         <div className="flex flex-col md:flex-row">
-          {/* Sidebar Pagination */}
           <div className="bg-gradient-to-br from-gray-800 to-gray-900 p-6 w-full md:w-1/4 mb-6 md:mb-0 md:mr-8 rounded-2xl shadow-lg flex flex-col items-center">
             <h3 className="text-2xl font-bold mb-6 text-cyan-400 tracking-wide">Questions</h3>
             <div className="grid grid-cols-4 gap-4">
@@ -126,7 +125,7 @@ const Unit5 = () => {
             </div>
           </div>
 
-          {/* Main Question Area */}
+
           <div className="flex-1 md:w-1/2">
             <div className="bg-gray-800 p-6 rounded-lg shadow-md">
               <h2 className="text-xl font-semibold mb-6">
