@@ -69,7 +69,8 @@ const Unit3 = () => {
     setSelectedAnswers(newSelectedAnswers);
 
     if (Object.keys(newSelectedAnswers).length === questions.length) {
-      setShowResult(true);
+      setTimeout(()=>{setShowResult(true);},3000);
+
     }
   };
 

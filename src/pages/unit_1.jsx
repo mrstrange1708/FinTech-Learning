@@ -65,10 +65,11 @@ const Unit1 = () => {
     setSelectedAnswers(newSelectedAnswers);
 
     if (Object.keys(newSelectedAnswers).length === questions.length) {
-      setShowResult(true);
+      setTimeout(()=>{setShowResult(true);},3000);
+
     }
   };
-  
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
